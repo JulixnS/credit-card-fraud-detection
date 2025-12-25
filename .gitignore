@@ -1,0 +1,12 @@
+# Ignore the virtual environment
+venv/
+.env
+.DS_Store
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+
+# Ignore the huge raw data (Users should download this themselves)
+data/
+
