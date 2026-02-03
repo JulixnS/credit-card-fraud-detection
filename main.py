@@ -4,23 +4,25 @@ from src.evaluation import plot_confusion_matrix
 from sklearn.metrics import classification_report
 import os
 
-
-model_path = 'models/random_forest_v1.pkl'
+models = ["random_forest_v1", "knn_v1"]
 
 def main():
     df = load_data("data/creditcard.csv")   #loads only the important features of the data
 
     X_train, y_train, X_test, y_test = split_data(df)
 
-    if os.path.exists(model_path):
-        model = load(model_path)
-    else:
-        model = train_model(X_train, y_train)
-        save(model, model_path)
+    for name in models:
 
-    predictions = model.predict(X_test)
-    print(classification_report(y_test, predictions)) 
-    plot_confusion_matrix(model, X_test, y_test)
+        if os.path.exists('models/' + name + '.pkl'):
+            model = load('models/' + name + '.pkl')
+        else:
+            model = train_model(X_train, y_train)
+            save(model, 'models/' + name + '.pkl')
+
+        predictions = model.predict(X_test)
+        print(name + " classification report: \n")
+        print(classification_report(y_test, predictions)) 
+        plot_confusion_matrix(model, name, X_test, y_test)
 
     
 
