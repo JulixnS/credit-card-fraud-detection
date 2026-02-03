@@ -29,7 +29,7 @@ The final product is deployed as an interactive **Streamlit Web App** that allow
 credit-card-fraud-detection/
 ├── src/
 │   ├── data_processing.py    # SMOTE and cleaning logic
-│   ├── model.py              # Random Forest training script
+│   ├── model.py              # Model training script
 │   └── evaluation.py         # Confusion Matrix plotting
 ├── notebooks/                # Jupyter notebooks for initial EDA
 ├── app.py                    # Streamlit Frontend
